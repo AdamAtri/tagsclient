@@ -1,0 +1,32 @@
+<h2>{{ hero.name | uppercase }} Details</h2>
+<div><span>id: </span>{{ hero.id }}</div>
+<div><span>name: </span>{{ hero.name }}</div>
+<div>
+  <label >
+    <input [(ngModel)]="hero.name" placeholder="name">
+  </label>
+</div>
+<h2>Heroes</h2>
+<ul class="heroes">
+  <li *ngFor="let m_hero of heroes" >
+    <a routerLink="/hero/{{ m_hero.id }}">
+      <span class="badge">{{ m_hero.id }}</span> {{ m_hero.name }}
+    </a>
+    <button class="delete" title="delete hero"
+      (click)="delete(m_hero)">x</button>
+  </li>
+</ul>
+<div>
+  <h3>Add a hero</h3>
+  <label>Hero name:
+    <input #heroName />
+  </label>
+
+  <button (click)="add(heroName.value); heroName.value=''">
+    Add
+  </button>
+</div>
+<!-- 
+  -- Show detail -- (removed)
+<app-hero-detail [hero]="selectedHero"></app-hero-detail> 
+-->
